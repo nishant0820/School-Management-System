@@ -117,8 +117,7 @@ export default function SiteHeader() {
   const [showFeatures, setShowFeatures] = React.useState(false);
 
   return (
-    <div className="h-screen">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container max-w-6xl mx-auto flex h-14 items-center justify-between">
           <div className="flex items-center space-x-4">
             <Logo />
@@ -300,6 +299,5 @@ export default function SiteHeader() {
           </Sheet>
         </div>
       </header>
-    </div>
   );
 }
