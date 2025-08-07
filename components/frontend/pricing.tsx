@@ -14,7 +14,7 @@ export default function Pricing() {
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="">
-            <SectionHeader title="✨Pricing Plans" description="Affordable school management solution designed to streamline your 
+            <SectionHeader title="✨ Pricing Plans" description="Affordable school management solution designed to streamline your 
             educational operations. No hidden fees, no per-student charges - 
             just one simple price for unlimited access." heading="Transparent pricing for schools" />
         </div>
