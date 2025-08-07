@@ -44,7 +44,7 @@ export default function Pricing() {
             </p>
             <div className="mt-10 flex items-center gap-x-4">
               <h4 className="flex-none text-xl font-semibold leading-6 text-indigo-600">
-                What's included
+                What&apos;s included
               </h4>
               <div className="h-px flex-auto bg-gray-100"></div>
             </div>
@@ -255,7 +255,7 @@ export default function Pricing() {
                 </p>
                 {isAnnual && (
                   <p className="mt-2 text-sm text-gray-500">
-                    That's only $83/month billed annually
+                    That&apos;s only $83/month billed annually
                   </p>
                 )}
                 <a
