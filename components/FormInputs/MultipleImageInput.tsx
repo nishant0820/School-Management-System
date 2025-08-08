@@ -2,17 +2,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UploadButton } from "@/lib/uploadthing";
 import Image from "next/image";
 import React from "react";
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
 type ImageInputProps = {
   title: string;
   imageUrls: string[];
   setImageUrls: (urls: string[]) => void;
-  endpoint: string;
+  endpoint?: keyof OurFileRouter;
 };
 export default function MultipleImageInput({
   title,
   imageUrls,
   setImageUrls,
-  endpoint,
+  endpoint = "categoryImage",
 }: ImageInputProps) {
   // console.log(imageUrls);
   return (

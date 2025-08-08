@@ -3,11 +3,12 @@ import { UploadButton } from "@/lib/uploadthing";
 // import { UploadButton } from "@/lib/uploadthing";
 import Image from "next/image";
 import React from "react";
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
 type ImageInputProps = {
   title: string;
   imageUrl: string;
   setImageUrl: (url: string) => void;
-  endpoint: string;
+  endpoint: keyof OurFileRouter;
 };
 export default function ImageInput({
   title,

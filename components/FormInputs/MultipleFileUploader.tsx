@@ -13,12 +13,13 @@ import {
 } from "react-icons/fa";
 import { MdTextSnippet } from "react-icons/md"; // For .txt files
 
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
 type MultipleImageInputProps = {
   label: string;
   files: FileProps[];
   setFiles: (files: FileProps[]) => void;
   className?: string;
-  endpoint?: string;
+  endpoint?: keyof OurFileRouter;
 };
 export type FileProps = {
   title: string;
@@ -69,7 +70,7 @@ export default function MultipleFileUpload({
   files,
   setFiles,
   className = "col-span-full",
-  endpoint = "",
+  endpoint = "fileUploads",
 }: MultipleImageInputProps) {
   function handleImageRemove(fileIndex: number) {
     const updatedFiles = files.filter((file, index) => index !== fileIndex);
