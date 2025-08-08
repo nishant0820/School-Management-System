@@ -10,18 +10,19 @@ import {
 
 import { CircleHelp, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-type TextInputProps = {
-  register: any;
-  errors: any;
+import { FieldErrors, UseFormRegister, FieldValues, Path } from "react-hook-form";
+type TextInputProps<T extends FieldValues> = {
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
   label: string;
   type?: string;
-  name: string;
+  name: Path<T>;
   toolTipText?: string;
   placeholder?: string;
   forgotPasswordLink?: string;
-  icon?: any;
+  icon?: React.ElementType;
 };
-export default function PasswordInput({
+export default function PasswordInput<T extends FieldValues>({
   register,
   errors,
   label,
@@ -31,7 +32,7 @@ export default function PasswordInput({
   icon,
   placeholder,
   forgotPasswordLink,
-}: TextInputProps) {
+}: TextInputProps<T>) {
   const Icon = icon;
   const [passType, setPassType] = useState(type);
   return (
@@ -72,9 +73,9 @@ export default function PasswordInput({
       </div>
       <div className="mt-2">
         <div className="relative rounded-md ">
-          {icon && (
+          {icon && Icon && (
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <Icon className="text-slate-300 w-4 h-4" />
+              {<Icon className="text-slate-300 w-4 h-4" />}
             </div>
           )}
           <input
@@ -115,7 +116,7 @@ export default function PasswordInput({
           </button>
         </div>
         {errors[name] && (
-          <span className="text-xs text-red-600">{errors[name].message}</span>
+          <span className="text-xs text-red-600">{String(errors[name]?.message)}</span>
         )}
       </div>
     </div>
