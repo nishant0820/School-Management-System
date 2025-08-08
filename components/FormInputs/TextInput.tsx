@@ -31,7 +31,6 @@ export default function TextInput<T extends FieldValues>({
   icon,
   placeholder,
 }: TextInputProps<T>) {
-  const Icon = icon;
   return (
     <div>
       <div className="flex space-x-2 items-center">
@@ -58,9 +57,9 @@ export default function TextInput<T extends FieldValues>({
       </div>
       <div className="mt-2">
         <div className="relative rounded-md ">
-          {icon && Icon && (
+          {icon && (
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              {<Icon className="text-slate-300 w-4 h-4" />}
+              {React.createElement(icon, { className: "text-slate-300 w-4 h-4" })}
             </div>
           )}
           <input
@@ -80,7 +79,7 @@ export default function TextInput<T extends FieldValues>({
             </p>
           )}
         </div>
-        {errors[`${name}`] && (
+        {errors[name] && (
           <span className="text-xs text-red-600">{label} is required</span>
         )}
       </div>
