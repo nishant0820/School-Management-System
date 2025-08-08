@@ -18,7 +18,7 @@ export default function Error() {
 
         {/* Error Description */}
         <p className="text-gray-600 mb-8 leading-relaxed">
-          Something went wrong on our end. We're working to fix this issue. 
+          Something went wrong on our end. We&apos;re working to fix this issue. 
           Please try again in a few moments or contact support if the problem persists.
         </p>
 
