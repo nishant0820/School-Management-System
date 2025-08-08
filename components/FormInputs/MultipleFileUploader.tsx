@@ -11,7 +11,7 @@ import {
   FaFilePowerpoint,
   FaFileAlt,
 } from "react-icons/fa";
-import { MdTextSnippet } from "react-icons/md";
+import { MdTextSnippet } from "react-icons/md"; // For .txt files
 
 type MultipleImageInputProps = {
   label: string;

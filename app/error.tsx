@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Home, ArrowLeft, ServerCrash, RefreshCw } from "lucide-react";
+import { ArrowLeft, ServerCrash, RefreshCw } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 export default function Error() {

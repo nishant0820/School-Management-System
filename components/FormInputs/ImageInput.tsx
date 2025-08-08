@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UploadButton } from "@/lib/uploadthing";
+// import { UploadButton } from "@/lib/uploadthing";
 import Image from "next/image";
 import React from "react";
 type ImageInputProps = {
@@ -32,11 +33,13 @@ export default function ImageInput({
             className="col-span-full"
             endpoint={endpoint}
             onClientUploadComplete={(res) => {
+              // Do something with the response
               console.log("Files: ", res);
 
               setImageUrl(res[0].url);
             }}
             onUploadError={(error: Error) => {
+              // Do something with the error.
               alert(`ERROR! ${error.message}`);
             }}
           />
