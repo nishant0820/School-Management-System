@@ -1,12 +1,13 @@
 import { cn } from "@/lib/utils";
 import { Loader, Plus } from "lucide-react";
 import React from "react";
+import { ComponentType } from "react";
 type SubmitButtonProps = {
   title: string;
   loadingTitle?: string;
   className?: string;
-  loaderIcon?: any;
-  buttonIcon?: any;
+  loaderIcon?: ComponentType<{ className?: string }>;
+  buttonIcon?: ComponentType<{ className?: string }>;
   loading: boolean;
   showIcon?: boolean;
   size?: "default" | "sm" | "lg" | "icon" | null | undefined;
