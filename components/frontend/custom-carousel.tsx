@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const carouselItems = [
@@ -48,10 +49,13 @@ export default function CustomCarousel() {
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <img
+            <Image
               src={item.image}
               alt={`Slide ${index + 1}`}
               className="object-cover w-full h-full"
+              fill
+              priority={index === 0}
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-purple-900/50" />
           </div>

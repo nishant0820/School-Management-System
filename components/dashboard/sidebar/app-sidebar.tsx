@@ -4,7 +4,6 @@ import {
   BarChart2,
   Bell,
   BookOpen,
-  Bot,
   Bus,
   ChevronRight,
   ChevronsUpDown,
@@ -16,7 +15,6 @@ import {
   MessageSquare,
   Settings2,
   Sparkles,
-  SquareTerminal,
   UserCog,
   Users,
 } from "lucide-react";
@@ -51,7 +49,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Logo from "@/components/logo";
 
-const data = {};
 
 export default function AppSidebar() {
   const user = {
