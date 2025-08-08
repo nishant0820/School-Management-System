@@ -8,7 +8,7 @@ export default function page() {
     <div className="py-16">
       <div className="py-6">
         <div className="flex items-center justify-center pb-4">
-          <Logo />
+          <Logo size="lg" />
         </div>
       <SectionHeader
         title=""
