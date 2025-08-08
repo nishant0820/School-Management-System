@@ -24,14 +24,14 @@ const features = [
     description:
       "Comprehensive tools for curriculum planning, examination management, and automated grading with detailed performance analytics.",
     icon: GraduationCap,
-    image: "/images/placeholder.jpg"
+    image: "/images/academic.jpg"
   },
   {
     title: "Smart Communication Hub",
     description:
       "Multi-channel messaging platform connecting teachers and students with real-time notificaions and updates.",
     icon: MessageSquare,
-    image: "/images/placeholder.jpg"
+    image: "/images/communication.jpg"
   },
   {
     title: "Financial Management System",
@@ -73,7 +73,7 @@ export default function GridFeatures() {
           description="Manage your school operations seamlessly with our comprehensive platform."
         />
         <div className="grid md:grid-cols-2 gap-6 lg:gap-10 mt-12">
-          <Card className="relative overflow-hidden">
+        <Card>
             <CardHeader>
               <CardTitle className="text-2xl">
                 {features[0].title}
@@ -82,24 +82,14 @@ export default function GridFeatures() {
                 {features[0].description}
               </p>
             </CardHeader>
-            <CardContent>
-              <div className="relative bg-muted rounded-lg p-2">
-                <div className="absolute left-0 top-0 bottom-0 w-16 bg-background/95 border-r flex flex-col gap-2 p-2">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-full aspect-square rounded bg-muted-foreground/10 flex items-center justify-center"
-                    />
-                  ))}
-                </div>
+            <CardContent className="">
                 <Image
                   src={features[0].image}
                   width={600}
                   height={400}
                   alt={features[0].title}
-                  className="rounded ml-16"
+                  className="rounded w-full"
                 />
-              </div>
             </CardContent>
           </Card>
           <Card>
@@ -123,7 +113,7 @@ export default function GridFeatures() {
           </Card>
         </div>
         <div className="grid md:grid-cols-2 gap-6 lg:gap-10 mt-12">
-          <Card className="relative overflow-hidden">
+        <Card>
             <CardHeader>
               <CardTitle className="text-2xl">
                 {features[2].title}
@@ -132,24 +122,14 @@ export default function GridFeatures() {
                 {features[2].description}
               </p>
             </CardHeader>
-            <CardContent>
-              <div className="relative bg-muted rounded-lg p-2">
-                <div className="absolute left-0 top-0 bottom-0 w-16 bg-background/95 border-r flex flex-col gap-2 p-2">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-full aspect-square rounded bg-muted-foreground/10 flex items-center justify-center"
-                    />
-                  ))}
-                </div>
+            <CardContent className="">
                 <Image
                   src={features[2].image}
                   width={600}
                   height={400}
                   alt={features[2].title}
-                  className="rounded ml-16"
+                  className="rounded w-full"
                 />
-              </div>
             </CardContent>
           </Card>
           <div className="space-y-4">
@@ -194,7 +174,7 @@ export default function GridFeatures() {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-6 lg:gap-10 mt-12">
-          <Card className="relative overflow-hidden">
+        <Card>
             <CardHeader>
               <CardTitle className="text-2xl">
                 {features[5].title}
@@ -203,24 +183,14 @@ export default function GridFeatures() {
                 {features[5].description}
               </p>
             </CardHeader>
-            <CardContent>
-              <div className="relative bg-muted rounded-lg p-2">
-                <div className="absolute left-0 top-0 bottom-0 w-16 bg-background/95 border-r flex flex-col gap-2 p-2">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-full aspect-square rounded bg-muted-foreground/10 flex items-center justify-center"
-                    />
-                  ))}
-                </div>
+            <CardContent className="">
                 <Image
                   src={features[5].image}
                   width={600}
                   height={400}
                   alt={features[5].title}
-                  className="rounded ml-16"
+                  className="rounded w-full"
                 />
-              </div>
             </CardContent>
           </Card>
           <Card>
