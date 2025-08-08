@@ -6,8 +6,8 @@ import React from "react";
 type ImageInputProps = {
   title: string;
   imageUrl: string;
-  setImageUrl: any;
-  endpoint: any;
+  setImageUrl: (url: string) => void;
+  endpoint: string;
 };
 export default function ImageInput({
   title,
