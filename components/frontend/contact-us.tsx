@@ -15,6 +15,7 @@ export type RegisterInputProps = {
   schoolPage: string;
   students: string;
   role: string;
+  social: string;
 };
 
 const ContactUs: React.FC = () => {
@@ -33,9 +34,10 @@ const ContactUs: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-center">
           <div className="col-span-2 bg-white p-6 rounded-2xl shadow">
-            <h3 className="text-2xl text-center font-semibold mb-4">
-              Sign up to get your School onboard
+            <h3 className="text-2xl text-center font-semibold">
+              Tell us about your institution and requirements
             </h3>
+            <p className="text-muted-foreground text-sm text-center px-4 py-2 mb-4 max-w-2xl">Our team will reach out within 24 hours to schedule a personalized demo and discuss your specific needs.</p>
             <form className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
             <TextInput
                 label="Full Name"
@@ -114,7 +116,7 @@ const ContactUs: React.FC = () => {
                 label="How did you hear about Us?"
                 icon={Megaphone}
                 register={register}
-                name="students"
+                name="social"
                 errors={errors}
                 placeholder="Social Media"
               />

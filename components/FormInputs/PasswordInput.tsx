@@ -8,21 +8,20 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { CircleHelp, Eye, EyeOff } from "lucide-react";
+import { CircleHelp, Eye, EyeOff, Mail } from "lucide-react";
 import Link from "next/link";
-import { FieldErrors, UseFormRegister, FieldValues, Path } from "react-hook-form";
-type TextInputProps<T extends FieldValues> = {
-  register: UseFormRegister<T>;
-  errors: FieldErrors<T>;
+type TextInputProps = {
+  register: any;
+  errors: any;
   label: string;
   type?: string;
-  name: Path<T>;
+  name: string;
   toolTipText?: string;
   placeholder?: string;
   forgotPasswordLink?: string;
-  icon?: React.ElementType;
+  icon?: any;
 };
-export default function PasswordInput<T extends FieldValues>({
+export default function PasswordInput({
   register,
   errors,
   label,
@@ -32,7 +31,7 @@ export default function PasswordInput<T extends FieldValues>({
   icon,
   placeholder,
   forgotPasswordLink,
-}: TextInputProps<T>) {
+}: TextInputProps) {
   const Icon = icon;
   const [passType, setPassType] = useState(type);
   return (
@@ -73,9 +72,9 @@ export default function PasswordInput<T extends FieldValues>({
       </div>
       <div className="mt-2">
         <div className="relative rounded-md ">
-          {icon && Icon && (
+          {icon && (
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              {<Icon className="text-slate-300 w-4 h-4" />}
+              <Icon className="text-slate-300 w-4 h-4" />
             </div>
           )}
           <input
@@ -116,7 +115,7 @@ export default function PasswordInput<T extends FieldValues>({
           </button>
         </div>
         {errors[name] && (
-          <span className="text-xs text-red-600">{String(errors[name]?.message)}</span>
+          <span className="text-xs text-red-600">{errors[name].message}</span>
         )}
       </div>
     </div>

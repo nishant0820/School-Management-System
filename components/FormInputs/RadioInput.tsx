@@ -5,22 +5,20 @@ type RadioOption = {
   id: string;
 };
 
-import { FieldErrors, UseFormRegister, FieldValues, Path } from "react-hook-form";
-
-type RadioInputProps<T extends FieldValues> = {
+type RadioInputProps = {
   radioOptions: RadioOption[];
-  register: UseFormRegister<T>;
+  register: any;
   label: string;
-  name: Path<T>;
-  errors: FieldErrors<T>;
+  name: string;
+  errors: any;
 };
-export default function RadioInput<T extends FieldValues>({
+export default function RadioInput({
   radioOptions,
   register,
   label,
   name,
   errors,
-}: RadioInputProps<T>) {
+}: RadioInputProps) {
   return (
     <div className="grid gap-3 pt-4">
       <h3 className=" font-semibold text-gray-900 dark:text-white">{label}</h3>
@@ -33,8 +31,8 @@ export default function RadioInput<T extends FieldValues>({
             >
               <div className="flex items-center ps-3">
                 <input
-                  {...register(name, { required: true })}
-                  name={name}
+                  {...register(`${name}`, { required: true })}
+                  name={`${name}`}
                   id={item.id}
                   type="radio"
                   value={item.id}
@@ -51,7 +49,7 @@ export default function RadioInput<T extends FieldValues>({
           );
         })}
       </ul>
-      {errors[name] && (
+      {errors[`${name}`] && (
         <span className="text-red-600  text-sm">{label} is required</span>
       )}
     </div>

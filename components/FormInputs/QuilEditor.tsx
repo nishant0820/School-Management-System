@@ -2,19 +2,17 @@
 import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-interface QuillEditorProps {
-  label: string;
-  className?: string;
-  value: string;
-  onChange: (value: string) => void;
-}
-
 export default function QuillEditor({
   label,
   className = "sm:col-span-2",
   value,
   onChange,
-}: QuillEditorProps) {
+}: {
+  label: string;
+  className: string;
+  value: any;
+  onChange: any;
+}) {
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],

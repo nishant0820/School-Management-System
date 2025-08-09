@@ -1,20 +1,19 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { FieldErrors, UseFormRegister, FieldValues, Path } from "react-hook-form";
-type TextAreaProps<T extends FieldValues> = {
-  register: UseFormRegister<T>;
-  errors: FieldErrors<T>;
+type TextAreaProps = {
+  register: any;
+  errors: any;
   label: string;
-  name: Path<T>;
+  name: string;
   helperText?: string;
 };
-export default function TextArea<T extends FieldValues>({
+export default function TextArea({
   register,
   errors,
   label,
   name,
   helperText = "",
-}: TextAreaProps<T>) {
+}: TextAreaProps) {
   return (
     <div className="col-span-full">
       <label
@@ -26,7 +25,7 @@ export default function TextArea<T extends FieldValues>({
       <div className="mt-2">
         <textarea
           id={name}
-          {...register(name, { required: true })}
+          {...register(`${name}`, { required: true })}
           rows={3}
           className={cn(
             "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-sm",

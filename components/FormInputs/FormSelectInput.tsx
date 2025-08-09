@@ -1,14 +1,13 @@
 "use client";
 import AddNewButton from "@/components/FormInputs/AddNewButton";
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-tailwindcss-select";
 import { Option, Options } from "react-tailwindcss-select/dist/components/type";
-import { SelectValue } from "react-tailwindcss-select/dist/components/type";
 type FormSelectInputProps = {
   options: Options;
   label: string;
   option: Option;
-  setOption: (option: SelectValue) => void;
+  setOption: any;
   href?: string;
   labelShown?: boolean;
   toolTipText?: string;

@@ -5,15 +5,15 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className="py-16">
+    <div className="py-12">
       <div className="py-6">
-        <div className="flex items-center justify-center pb-4">
+        <div className="flex items-center justify-center pb-8">
           <Logo size="lg" />
         </div>
       <SectionHeader
         title=""
-        heading="All-in-One School Management Platform"
-        description="Manage your school operations seamlessly with our comprehensive platform."
+        heading="Get Your School Management System"
+        description="Ready to transform your school&apos;s digital infrastructure? Fill out the form below and we&apos;ll help you get started with a customized solution tailored to your institution&apos;s needs."
       />
       </div>
       <ContactUs />
