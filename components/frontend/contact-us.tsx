@@ -42,6 +42,29 @@ const ContactUs: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterInputProps>();
+  const roles = [
+    {
+      label: "Principal/Leadership/Management",
+      value: "Principal"
+    },
+    {
+      label: "School Administrator",
+      value: "Administrator"
+    },
+    {
+      label: "IT Management",
+      value: "IT"
+    },
+    {
+      label: "Teacher/Parent/Student",
+      value: "Teacher"
+    },
+    {
+      label: "Consultant/Reseller",
+      value: "Consultant"
+    },
+  ];
+  const [selectedRole, setSelectedRole] = useState<any>(null);
   async function onSubmit(data: RegisterInputProps) {
     console.log(data);
     data.phone = removeLoadingZero(data.phone);
@@ -123,13 +146,11 @@ const ContactUs: React.FC = () => {
               />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
-              <TextInput
+              <FormSelectInput
                 label="Your Role"
-                icon={User}
-                register={register}
-                name="role"
-                errors={errors}
-                placeholder="role"
+                options={roles}
+                option={selectedRole}
+                setOption={setSelectedRole}
               />
               </div>
               <TextInput
