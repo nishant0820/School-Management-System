@@ -5,6 +5,16 @@ import TextInput from "../FormInputs/TextInput";
 import { Send, User, Mail, Phone, School, Globe, Users, Megaphone } from "lucide-react";
 import SubmitButton from "../FormInputs/SubmitButton";
 import PhoneInput from "../FormInputs/PhoneInput";
+import FormSelectInput from "../FormInputs/FormSelectInput";
+import { countries } from "@/countries";
+
+const removeLoadingZero = (phoneNumber: string) => {
+  const numberStr = phoneNumber.toString();
+  if (numberStr.startsWith("0")) {
+    return numberStr.substring(1);
+  }
+  return numberStr;
+};
 
 export type RegisterInputProps = {
   fullName: string;
@@ -20,7 +30,13 @@ export type RegisterInputProps = {
 };
 
 const ContactUs: React.FC = () => {
-  const [isLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [phoneCode, setPhoneCode] = useState("");
+  const initialCountryCode = "IN";
+  const initialCountry = countries.find(
+      (item) => item.countryCode === initialCountryCode
+    );
+    const [selectedCountry, setSelectedCountry] = useState<any>(initialCountry);
   const {
     register,
     handleSubmit,
@@ -28,6 +44,10 @@ const ContactUs: React.FC = () => {
   } = useForm<RegisterInputProps>();
   async function onSubmit(data: RegisterInputProps) {
     console.log(data);
+    data.phone = removeLoadingZero(data.phone);
+    const phoneNumber = `${phoneCode}${data.phone}`;
+    console.log(phoneNumber);
+    
   }
 
   return (
@@ -63,8 +83,9 @@ const ContactUs: React.FC = () => {
                 errors={errors}
                 label="Phone"
                 name="phone"
-                toolTipText="Enter your phone number with country code"
+                toolTipText="Select Code"
                 placeholder="Phone number"
+                setPhoneCode={setPhoneCode}
               />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
@@ -76,13 +97,11 @@ const ContactUs: React.FC = () => {
                 errors={errors}
                 placeholder="School Name"
               />
-              <TextInput
+              <FormSelectInput
                 label="Country"
-                icon={Globe}
-                register={register}
-                name="country"
-                errors={errors}
-                placeholder="India"
+                options={countries}
+                option={selectedCountry}
+                setOption={setSelectedCountry}
               />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
