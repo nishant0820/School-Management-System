@@ -12,7 +12,6 @@ import toast from "react-hot-toast";
 import PasswordInput from "@/components/FormInputs/PasswordInput";
 import FormSelectInput from "@/components/FormInputs/FormSelectInput";
 import { countries } from "@/countries";
-import Banner from "@/components/info-banner";
 
 export type SelectOptionProps = {
   label: string;
@@ -199,7 +198,7 @@ export default function SingleStudentForm({
                 option={selectedClass}
                 setOption={setSelectedClass}
                 toolTipText="Add New Class"
-                href="/dashboard/academics/classes/new"
+                href="/dashboard/academics/classes"
               />
               <FormSelectInput
                 label="Stream"
@@ -207,7 +206,7 @@ export default function SingleStudentForm({
                 option={selectedStream}
                 setOption={setSelectedStream}
                 toolTipText="Add New Stream"
-                href="/dashboard/academics/streams/new"
+                href="/dashboard/academics/classes"
               />
               
             </div>

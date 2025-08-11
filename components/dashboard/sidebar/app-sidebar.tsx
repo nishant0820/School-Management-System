@@ -118,10 +118,6 @@ export default function AppSidebar() {
         url: "/dashboard/academics/classes",
       },
       {
-        title: "Streams",
-        url: "/dashboard/academics/streams",
-      },
-      {
         title: "Timetable",
         url: "/dashboard/academics/timetable",
       },
