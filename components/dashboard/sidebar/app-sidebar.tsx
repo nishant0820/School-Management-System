@@ -110,28 +110,32 @@ export default function AppSidebar() {
   },
   {
     title: "Academics",
-    url: "/academics",
+    url: "/dashboard/academics",
     icon: GraduationCap,
     items: [
       {
-        title: "Curriculum",
-        url: "/academics/curriculum",
+        title: "Classes",
+        url: "/dashboard/academics/classes",
+      },
+      {
+        title: "Streams",
+        url: "/dashboard/academics/streams",
       },
       {
         title: "Timetable",
-        url: "/academics/timetable",
+        url: "/dashboard/academics/timetable",
       },
       {
         title: "Examinations",
-        url: "/academics/examinations",
+        url: "/dashboard/academics/examinations",
       },
       {
         title: "Assignments",
-        url: "/academics/assignments",
+        url: "/dashboard/academics/assignments",
       },
       {
         title: "Report Cards",
-        url: "/academics/report-cards",
+        url: "/dashboard/academics/report-cards",
       },
     ],
   },
@@ -183,47 +187,47 @@ export default function AppSidebar() {
   },
   {
     title: "Finance",
-    url: "/finance",
+    url: "/dashboard/finance",
     icon: DollarSign,
     items: [
       {
         title: "Fee Management",
-        url: "/finance/fees",
+        url: "/dashboard/finance/fees",
       },
       {
         title: "Payments",
-        url: "/finance/payments",
+        url: "/dashboard/finance/payments",
       },
       {
         title: "Scholarships",
-        url: "/finance/scholarships",
+        url: "/dashboard/finance/scholarships",
       },
       {
         title: "Reports",
-        url: "/finance/reports",
+        url: "/dashboard/finance/reports",
       },
     ],
   },
   {
     title: "Transport",
-    url: "/transport",
+    url: "/dashboard/transport",
     icon: Bus,
     items: [
       {
         title: "Routes",
-        url: "/transport/routes",
+        url: "/dashboard/transport/routes",
       },
       {
         title: "Tracking",
-        url: "/transport/tracking",
+        url: "/dashboard/transport/tracking",
       },
       {
         title: "Drivers",
-        url: "/transport/drivers",
+        url: "/dashboard/transport/drivers",
       },
       {
         title: "Maintenance",
-        url: "/transport/maintenance",
+        url: "/dashboard/transport/maintenance",
       },
     ],
   },

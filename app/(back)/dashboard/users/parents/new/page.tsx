@@ -1,9 +1,14 @@
-import React from 'react'
+import { Card, CardContent } from "@/components/ui/card";
+import ParentForm from "@/components/dashboard/forms/users/parent-form";
 
-export default function page() {
+export default function AdmissionTabs() {
   return (
-    <div>
-      New Parent
+    <div className="w-full max-w-5xl mx-auto p-6">
+      <Card className="border-t-4 border-primary shadow">
+          <CardContent className="p-6">
+            <ParentForm />
+          </CardContent>
+        </Card>
     </div>
-  )
+  );
 }

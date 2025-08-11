@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { User, Users } from "lucide-react";
 import SingleStudentForm from "@/components/dashboard/forms/students/student-form";
 import BulkStudentForm from "@/components/dashboard/forms/students/bulk-student-form";
+import Banner from "@/components/info-banner";
 
 export default function AdmissionTabs() {
   return (
@@ -43,6 +44,7 @@ export default function AdmissionTabs() {
         <Card className="border-t-4 border-primary shadow">
           <CardContent className="p-6">
             <TabsContent value="single" className="mt-0">
+                  <Banner message="Please first create Parent, Class & Stream!" type="warning" />
               <SingleStudentForm />
             </TabsContent>
             <TabsContent value="bulk" className="mt-0">

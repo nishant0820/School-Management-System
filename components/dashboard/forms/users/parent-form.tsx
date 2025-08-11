@@ -12,7 +12,6 @@ import toast from "react-hot-toast";
 import PasswordInput from "@/components/FormInputs/PasswordInput";
 import FormSelectInput from "@/components/FormInputs/FormSelectInput";
 import { countries } from "@/countries";
-import Banner from "@/components/info-banner";
 
 export type SelectOptionProps = {
   label: string;
@@ -28,33 +27,61 @@ export type StudentProps = {
   password: string;
   imageUrl: string;
 };
-export default function SingleStudentForm({
+export default function ParentForm({
   editingId,
   initialData,
 }: SingleStudentFormProps) {
-  const parents = [
+  const relationships = [
     {
-      label: "John Doe",
-      value: "123456",
+      label: "FATHER",
+      value: "father",
     },
     {
-      label: "Smith",
-      value: "123467",
+      label: "MOTHER",
+      value: "mother",
+    },
+    {
+      label: "GUARDIAN",
+      value: "guardian",
+    },
+    {
+      label: "OTHER",
+      value: "other",
     },
   ];
-  const [selectedParent, setSelectedParent] = useState<any>(null);
+  const [selectedRelationship, setSelectedRelationship] = useState<any>(
+    relationships[0]
+  );
 
-  const classes = [
+  const titles = [
     {
-      label: "Class 1",
-      value: "class_1",
+      label: "Mr.",
+      value: "mr",
     },
     {
-      label: "Class 2",
-      value: "class_2",
+      label: "Mrs.",
+      value: "mrs",
     },
   ];
-  const [selectedClass, setSelectedClass] = useState<any>(null);
+  const [selectedTitle, setSelectedTitle] = useState<any>(null);
+
+  const contactMethod = [
+    {
+      label: "Phone",
+      value: "phone",
+    },
+    {
+      label: "Email",
+      value: "email",
+    },
+    {
+      label: "WhatsApp",
+      value: "whatsapp",
+    },
+  ];
+  const [selectedContactMethod, setSelectedContactMethod] = useState<any>(
+    contactMethod[0]
+  );
 
   const streams = [
     {
@@ -153,9 +180,9 @@ export default function SingleStudentForm({
   return (
     <form className="" onSubmit={handleSubmit(saveStudent)}>
       <FormHeader
-        href="/students"
-        parent=""
-        title="Student"
+        href="/parents"
+        parent="users"
+        title="Parent"
         editingId={editingId}
         loading={loading}
       />
@@ -164,6 +191,12 @@ export default function SingleStudentForm({
         <div className="lg:col-span-12 col-span-full space-y-3">
           <div className="grid gap-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <FormSelectInput
+                label="Title"
+                options={titles}
+                option={selectedTitle}
+                setOption={setSelectedTitle}
+              />
               <TextInput
                 register={register}
                 errors={errors}
@@ -176,42 +209,36 @@ export default function SingleStudentForm({
                 label="Last Name"
                 name="lastName"
               />
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <FormSelectInput
+                label="Relationship"
+                options={relationships}
+                option={selectedRelationship}
+                setOption={setSelectedRelationship}
+              />
               <TextInput
                 register={register}
                 errors={errors}
-                label="Student Email"
-                name="email"
-                type="email"
+                label="National ID"
+                name="NIN"
+              />
+              <FormSelectInput
+                label="Gender"
+                options={gender}
+                option={selectedGender}
+                setOption={setSelectedGender}
+                isSearchable={false}
               />
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-              <FormSelectInput
-                label="Parent"
-                options={parents}
-                option={selectedParent}
-                setOption={setSelectedParent}
-                toolTipText="Add New Parent"
-                href="/dashboard/users/parents/new"
+              <TextInput
+                register={register}
+                errors={errors}
+                label="Date of Birth"
+                name="dob"
+                type="date"
               />
-              <FormSelectInput
-                label="Class"
-                options={classes}
-                option={selectedClass}
-                setOption={setSelectedClass}
-                toolTipText="Add New Class"
-                href="/dashboard/academics/classes/new"
-              />
-              <FormSelectInput
-                label="Stream"
-                options={streams}
-                option={selectedStream}
-                setOption={setSelectedStream}
-                toolTipText="Add New Stream"
-                href="/dashboard/academics/streams/new"
-              />
-              
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               <TextInput
                 register={register}
                 errors={errors}
@@ -225,71 +252,44 @@ export default function SingleStudentForm({
                 option={selectedNationality}
                 setOption={setSelectedNationality}
               />
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <TextInput
+                register={register}
+                errors={errors}
+                label="Email"
+                name="email"
+                type="email"
+              />
               <PasswordInput
                 register={register}
                 errors={errors}
-                label="Student Password"
+                label="Parent Password"
                 name="password"
-                toolTipText="This password will be used by the student on Student Portal"
-              />
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-              <TextInput
-                register={register}
-                errors={errors}
-                label="State/Village"
-                name="state"
+                toolTipText="This password will be used by the parent on Parent Portal"
               />
               <TextInput
                 register={register}
                 errors={errors}
-                label="Birth Certificate No"
-                name="BCN"
-              />
-              <FormSelectInput
-                label="Religion"
-                options={religion}
-                option={selectedReligion}
-                setOption={setSelectedReligion}
-              />
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <FormSelectInput
-                label="Gender"
-                options={gender}
-                option={selectedGender}
-                setOption={setSelectedGender}
-                isSearchable={false}
-              />
-              <TextInput
-                register={register}
-                errors={errors}
-                label="Date of Birth"
-                name="dob"
-                type="date"
-              />
-              <TextInput
-                register={register}
-                errors={errors}
-                label="Roll No."
-                name="rollNo"
+                label="WhatsApp"
+                name="whatsapp"
+                type="tel"
               />
             </div>
             <div className="grid md:grid-cols-2 gap-3">
               <div className="">
                 <div className="grid gap-3">
-                  <TextInput
-                    register={register}
-                    errors={errors}
-                    label="Registration No."
-                    name="regNo"
+                  <FormSelectInput
+                    label="Contact Method"
+                    options={contactMethod}
+                    option={selectedContactMethod}
+                    setOption={setSelectedContactMethod}
                   />
                   <TextInput
+                    label="Occupation"
                     register={register}
                     errors={errors}
-                    label="Admission Date"
-                    name="admissionDate"
-                    type="date"
+                    name="occupation"
                   />
                 </div>
                 <div className="grid gap-3">
@@ -302,25 +302,24 @@ export default function SingleStudentForm({
                 </div>
               </div>
               <div className="grid">
-              <ImageInput
-                title="Student Profile Image"
-                imageUrl={imageUrl}
-                setImageUrl={setImageUrl}
-                endpoint="studentProfileImage"
-                className="object-contain"
-              />
+                <ImageInput
+                  title="Parent Profile Image"
+                  imageUrl={imageUrl}
+                  setImageUrl={setImageUrl}
+                  endpoint="parentProfileImage"
+                  className="object-contain"
+                />
+              </div>
             </div>
-            </div>
-            
           </div>
         </div>
       </div>
       <FormFooter
-        href="/students"
+        href="/parents"
         editingId={editingId}
         loading={loading}
-        title="Student"
-        parent=""
+        title="Parent"
+        parent="users"
       />
     </form>
   );
