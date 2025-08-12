@@ -1,49 +1,31 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import {
-  ChevronLeft,
-  GraduationCap,
-  Users,
-  Plus,
-  Pencil,
-  Trash2,
-} from "lucide-react";
-import { Input } from "../ui/input";
-import { cn } from "@/lib/utils";
-import { ScrollArea } from "../ui/scroll-area";
-import { Button } from "../ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-  TooltipProvider,
-} from "../ui/tooltip";
-import ClassForm from "./forms/academics/class-form";
-import StreamForm from "./forms/academics/stream-form";
+import * as React from "react"
+import { ChevronLeft, GraduationCap, Users, Pencil, Trash2 } from "lucide-react"
+import { cn } from "@/lib/utils"
+import ClassForm from "./forms/academics/class-form"
+import StreamForm from "./forms/academics/stream-form"
+import { Input } from "../ui/input"
+import { ScrollArea } from "../ui/scroll-area"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip"
+import { Button } from "../ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
 
 interface ClassItem {
-  id: number;
-  name: string;
-  sections: number;
-  totalStudents: number;
+  id: number
+  name: string
+  sections: number
+  totalStudents: number
 }
 
 interface Section {
-  name: string;
-  students: number;
-  classTeacher: string;
+  name: string
+  students: number
+  classTeacher: string
 }
 
 interface SectionsData {
-  [key: number]: Section[];
+  [key: number]: Section[]
 }
 
 const classes: ClassItem[] = [
@@ -52,7 +34,7 @@ const classes: ClassItem[] = [
   { id: 3, name: "Class 7", sections: 3, totalStudents: 140 },
   { id: 4, name: "Class 8", sections: 3, totalStudents: 150 },
   { id: 5, name: "Class 9", sections: 3, totalStudents: 160 },
-];
+]
 
 const sections: SectionsData = {
   1: [
@@ -60,10 +42,10 @@ const sections: SectionsData = {
     { name: "5B", students: 38, classTeacher: "Ms. Jessica" },
     { name: "5C", students: 42, classTeacher: "Ms. Emily" },
   ],
-};
+}
 
 export default function ClassListing() {
-  const [selectedClass, setSelectedClass] = React.useState<number>(1);
+  const [selectedClass, setSelectedClass] = React.useState<number>(1)
 
   return (
     <div className="grid lg:grid-cols-[280px_1fr] h-[calc(100vh-2rem)] max-h-[calc(100vh-2rem)] gap-2 p-4 pt-2">
@@ -76,11 +58,7 @@ export default function ClassListing() {
           <ClassForm />
         </div>
         <div className="px-4 py-2">
-          <Input
-            placeholder="Search Classes..."
-            className="h-9"
-            type="search"
-          />
+          <Input placeholder="Search Classes..." className="h-9" type="search" />
         </div>
         <ScrollArea className="flex-1">
           <div className="px-2 space-y-3">
@@ -91,7 +69,7 @@ export default function ClassListing() {
                   "flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm transition-colors",
                   selectedClass === classItem.id
                     ? "bg-accent text-accent-foreground"
-                    : "hover:bg-muted text-muted-foreground"
+                    : "hover:bg-muted text-muted-foreground",
                 )}
               >
                 <button
@@ -100,9 +78,7 @@ export default function ClassListing() {
                 >
                   <div className="flex w-full items-center justify-between">
                     <span className="font-medium">{classItem.name}</span>
-                    <span className="text-xs">
-                      {classItem.sections} sections
-                    </span>
+                    <span className="text-xs">{classItem.sections} sections</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <Users className="h-3 w-3" />
@@ -150,9 +126,7 @@ export default function ClassListing() {
               <span className="sr-only">Go Back</span>
             </Button>
             <div>
-              <h2 className="text-lg font-semibold">
-                {classes.find((c) => c.id === selectedClass)?.name}
-              </h2>
+              <h2 className="text-lg font-semibold">{classes.find((c) => c.id === selectedClass)?.name}</h2>
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <span>Classes</span>
                 <span>/</span>
@@ -164,15 +138,42 @@ export default function ClassListing() {
         </div>
         <div className="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {sections[selectedClass]?.map((section) => (
-            <Card key={section.name}>
-                
+            <Card key={section.name} className="relative">
               <CardHeader className="pb-2">
-                
-                <CardTitle className="text-lg">{section.name}</CardTitle>
-                
-                <CardDescription>
-                  Class Teacher: {section.classTeacher}
-                </CardDescription>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <CardTitle className="text-lg">{section.name}</CardTitle>
+                    <CardDescription>Class Teacher: {section.classTeacher}</CardDescription>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button variant="ghost" size="icon" className="w-7 h-7">
+                            <Pencil className="w-3 h-3" />
+                            <span className="sr-only">Edit Section</span>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Edit Section</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button variant="ghost" size="icon" className="w-7 h-7">
+                            <Trash2 className="w-3 h-3" />
+                            <span className="sr-only">Delete Section</span>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Delete Section</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -185,5 +186,5 @@ export default function ClassListing() {
         </div>
       </div>
     </div>
-  );
+  )
 }
