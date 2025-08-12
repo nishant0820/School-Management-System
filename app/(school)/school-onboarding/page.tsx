@@ -5,7 +5,7 @@ import React from 'react'
 export default function page() {
   return (
     <div>
-        <div className="max-w-5xl mx-auto p-16">
+        <div className="max-w-3xl mx-auto p-16">
         <Card className="border-t-4 border-primary shadow">
           <CardContent className="p-6">
           <SchoolOnboardingForm />

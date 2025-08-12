@@ -23,6 +23,12 @@ export const ourFileRouter = {
       return { uploadedBy: "Nishant" };
     }
   ),
+  schoolLogo: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
+    async ({ file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "Nishant" };
+    }
+  ),
   fileUploads: f({
     image: { maxFileSize: "1MB", maxFileCount: 4 },
     pdf: { maxFileSize: "1MB", maxFileCount: 4 },
