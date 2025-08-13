@@ -16,6 +16,7 @@ export default function page() {
         description="Ready to transform your school&apos;s digital infrastructure? Fill out the form below and we&apos;ll help you get started with a customized solution tailored to your institution&apos;s needs."
       />
       </div>
+
       <ContactUs />
     </div>
   );
