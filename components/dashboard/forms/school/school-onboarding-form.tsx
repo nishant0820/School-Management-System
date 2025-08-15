@@ -14,6 +14,7 @@ import FormSelectInput from "@/components/FormInputs/FormSelectInput";
 import { countries } from "@/countries";
 import SubmitButton from "@/components/FormInputs/SubmitButton";
 import { Send } from "lucide-react";
+import { createSchool } from "@/app/actions/school";
 
 export type SelectOptionProps = {
   label: string;
@@ -23,11 +24,9 @@ type SingleStudentFormProps = {
   editingId?: string | undefined;
   initialData?: any | undefined | null;
 };
-export type StudentProps = {
+export type SchoolProps = {
   name: string;
-  email: string;
-  password: string;
-  imageUrl: string;
+  logo: string;
 };
 export default function SchoolOnboardingForm() {
   const {
@@ -35,9 +34,9 @@ export default function SchoolOnboardingForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<StudentProps>({
+  } = useForm<SchoolProps>({
     defaultValues: {
-      name: "",
+      name: ""
     },
   });
   const router = useRouter();
@@ -46,16 +45,16 @@ export default function SchoolOnboardingForm() {
   const initialImage = "/images/student.png";
   const [imageUrl, setImageUrl] = useState(initialImage);
 
-  async function saveStudent(data: StudentProps) {
+  async function saveStudent(data: SchoolProps) {
     try {
       setLoading(true);
-      data.imageUrl = imageUrl;
+      data.logo = imageUrl;
       console.log(data);
-      //await createCategory(data);
-      //setLoading(false);
-      //toast.success("Successfully Created!");
+      const res = await createSchool(data);
+      console.log(res);
+      setLoading(false);
+      toast.success("Successfully Created!");
       //reset();
-      //setImageUrl("/placeholder.svg");
       //router.push("/dashboard/categories");
     } catch (error) {
       setLoading(false);
