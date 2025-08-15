@@ -20,7 +20,7 @@ export const countries = [
     label: "United Kingdom",
     phoneCode: "+44",
     currencyCode: "GBP",
-    countryCode: "GB",
+    countryCode: "UK",
     flag: "🇬🇧",
   },
   {

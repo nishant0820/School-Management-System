@@ -16,12 +16,11 @@ const removeLoadingZero = (phoneNumber: string) => {
 export type RegisterInputProps = {
   fullName: string;
   email: string;
-  password?: string;
   phone: string;
   school: string;
   country: string;
   schoolPage: string;
-  students: string;
+  students: number;
   role: string;
   social: string;
 };
@@ -48,7 +47,7 @@ const ContactUs: React.FC = () => {
       school: "",
       country: "",
       schoolPage: "",
-      students: "",
+      students: 0,
       role: "",
       social: "",
     },
@@ -65,6 +64,7 @@ const ContactUs: React.FC = () => {
   async function onSubmit(data: RegisterInputProps) {
     data.phone = removeLoadingZero(data.phone);
     const phoneNumber = `${phoneCode}${data.phone}`;
+    data.students = Number(data.students);
     console.log(data);
     console.log(phoneNumber);
   }
