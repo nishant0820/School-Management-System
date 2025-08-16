@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { Send, ChevronDown } from "lucide-react";
 import { countries } from "@/countries";
 import SubmitButton from "../FormInputs/SubmitButton";
+import toast from "react-hot-toast";
+import { createContact } from "@/actions/admin";
 
 const removeLoadingZero = (phoneNumber: string) => {
   const numberStr = phoneNumber.toString();
@@ -13,7 +15,7 @@ const removeLoadingZero = (phoneNumber: string) => {
   return numberStr;
 };
 
-export type RegisterInputProps = {
+export type ContactProps = {
   fullName: string;
   email: string;
   phone: string;
@@ -26,7 +28,7 @@ export type RegisterInputProps = {
 };
 
 const ContactUs: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const initialCountryCode = "IN";
   const initialCountry = countries.find(
     (item) => item.countryCode === initialCountryCode
@@ -38,8 +40,9 @@ const ContactUs: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<RegisterInputProps>({
+  } = useForm<ContactProps>({
     defaultValues: {
       fullName: "",
       email: "",
@@ -61,12 +64,21 @@ const ContactUs: React.FC = () => {
     { label: "Consultant/Reseller", value: "Consultant" },
   ];
 
-  async function onSubmit(data: RegisterInputProps) {
+  async function onSubmit(data: ContactProps) {
     data.phone = removeLoadingZero(data.phone);
     const phoneNumber = `${phoneCode}${data.phone}`;
     data.students = Number(data.students);
-    console.log(data);
-    console.log(phoneNumber);
+    try {
+          setLoading(true);
+          const res = await createContact(data);
+          setLoading(false);
+          toast.success("Your request has been submitted!");
+          reset();
+          //router.push("/dashboard/categories");
+        } catch (error) {
+          toast.error("Failed to submit your request");
+          setLoading(false);
+        }
   }
 
   return (
@@ -314,7 +326,7 @@ const ContactUs: React.FC = () => {
               <SubmitButton
                 buttonIcon={Send}
                 title="Submit"
-                loading={isLoading}
+                loading={loading}
                 loadingTitle="Sending please wait..."
               />
             </form>

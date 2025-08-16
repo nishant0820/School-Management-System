@@ -1,10 +1,11 @@
 "use server"
 
 import { SchoolProps } from "@/components/dashboard/forms/school/school-onboarding-form";
+
 import axios from "axios";
 
 const BASE_API_URL = process.env.API_URL || "";
-const api = axios.create({
+export const api = axios.create({
     baseURL: BASE_API_URL,
     timeout: 5000,
     headers: {
@@ -24,3 +25,4 @@ export async function createSchool(data: SchoolProps) {
         throw error;
     }
 }
+

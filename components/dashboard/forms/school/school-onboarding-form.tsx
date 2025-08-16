@@ -3,26 +3,16 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import FormHeader from "../FormHeader";
-import FormFooter from "../FormFooter";
 import TextInput from "@/components/FormInputs/TextInput";
-import TextArea from "@/components/FormInputs/TextAreaInput";
 import ImageInput from "@/components/FormInputs/ImageInput";
 import toast from "react-hot-toast";
-import PasswordInput from "@/components/FormInputs/PasswordInput";
-import FormSelectInput from "@/components/FormInputs/FormSelectInput";
-import { countries } from "@/countries";
 import SubmitButton from "@/components/FormInputs/SubmitButton";
 import { Send } from "lucide-react";
-import { createSchool } from "@/app/actions/school";
+import { createSchool } from "@/actions/school";
 
 export type SelectOptionProps = {
   label: string;
   value: string;
-};
-type SingleStudentFormProps = {
-  editingId?: string | undefined;
-  initialData?: any | undefined | null;
 };
 export type SchoolProps = {
   name: string;
@@ -49,16 +39,13 @@ export default function SchoolOnboardingForm() {
     try {
       setLoading(true);
       data.logo = imageUrl;
-      console.log(data);
       const res = await createSchool(data);
-      console.log(res);
       setLoading(false);
       toast.success("Successfully Created!");
-      //reset();
+      reset();
       //router.push("/dashboard/categories");
     } catch (error) {
       setLoading(false);
-      console.log(error);
     }
   }
 
