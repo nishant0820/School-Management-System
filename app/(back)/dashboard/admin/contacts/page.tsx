@@ -11,7 +11,7 @@ export default async function page() {
       <TableHeader
         title="Contacts"
         linkTitle="Add Contact"
-        href="/dashboard/contacts/new"
+        href="/contact-us"
         data={contacts}
         model="contact"
       />

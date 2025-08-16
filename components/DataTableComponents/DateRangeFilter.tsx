@@ -79,7 +79,7 @@ export default function DateRangeFilter({
             mode="range"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={(value: any) => handleChange(value)}
+            onSelect={(value) => handleChange(value)}
             numberOfMonths={2}
           />
         </PopoverContent>
